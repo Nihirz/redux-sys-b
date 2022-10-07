@@ -46,6 +46,7 @@ Route::group(['middleware'=>'auth'], function () {
 
     Route::get('/view-product-detail/{id}', 'ClientProductController@downloadPdf')->name('view.clientdetails');
     Route::get('/download-pdf/{id}', 'ClientProductController@pdf')->name('download.pdf');
+    Route::get('/view-product-sendmail/{id}', 'ClientProductController@mailPdf')->name('send.clientdetails');
     Route::get('/view-pdf/{id}', 'ClientProductController@viewpdf')->name('view.pdf');
 });
 Auth::routes();

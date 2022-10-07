@@ -32,6 +32,7 @@
                             <a href="{{route('edit.client',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-lead-pencil"></i></a>
                             <a href="{{route('delete.client',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-delete"></i></a>
                             <a href="{{route('download.pdf',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-file-pdf"></i></a>
+                            <a href="{{route('send.clientdetails',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-email-open"></i></a>
                         </td>
                     </tr>
                 @empty
