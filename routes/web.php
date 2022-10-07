@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::group(['middleware'=>'auth'], function () {
     // Admin category Srart
     Route::get('/admin/category', 'AdminCategoryController@index')->name('admin.category');
+    Route::get('/admin/category/create', 'AdminCategoryController@create')->name('admin.category.create');
     Route::get('/admin/add-category', 'AdminCategoryController@add')->name('AddAdmin.category');
     Route::post('/admin/store-category', 'AdminCategoryController@store')->name('store.category');
     Route::get('/admin-edit/{id}', 'AdminCategoryController@edit')->name('edit.category');

@@ -1,28 +1,21 @@
 @extends('layouts.main')
 @section('content')
-<div id="addCategoryModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add New Category</h4>
-            </div>
-            <div class="modal-body">
-                <form  action="{{route('update.category')}}" method="POST">
-                    @csrf
-                <input type="hidden" name="id" value="{{$category->id}}">
-                    <div class="form-group">
-                        <label for="txtCatName">Category Name:</label>
-                        <input type="text" class="form-control" id="cat_name" placeholder="Enter Category Name"
-                            name="cat_name" value="{{$category->cat_name}}">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Edit Category</h4>
+      <form class="forms-sample" method="POST" action="{{route('update.category')}}" >
+        @csrf
+        <input type="hidden" name="id" value="{{ $category->id }}">
+        <div class="form-group">
+          <label for="exampleInputUsername1">Category Name:</label>
+          <input type="text" class="form-control" name="cat_name" id="exampleInputUsername1" placeholder="Username" value="{{ $category->cat_name }}">
+          @error('cat_name')
+              <span class="text-danger">{{ $message }}</span>
+          @enderror
         </div>
+        <button type="submit" class="btn btn-primary me-2">Update</button>
+        <a href="{{ route('admin.category') }}" class="btn btn-light">Cancel</a>
+      </form>
     </div>
-</div>
+  </div>
 @endsection

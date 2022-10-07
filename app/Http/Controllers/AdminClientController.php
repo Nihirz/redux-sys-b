@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use app\AdminClient;
 // use Illuminate\Support\Facades\App\Client;
 use App\Client;
+use Illuminate\Support\Facades\DB;
 
 class AdminClientController extends Controller
 {
     public function index()
     {
-        $client = Client::get();
+        $client = DB::table('clients')->paginate(10);
         return view('adminClient', compact('client'));
     }
     public function addnew()

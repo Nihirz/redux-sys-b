@@ -10,8 +10,12 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $data['AdminCategory'] = AdminCategory::orderBy('id','asc')->paginate(25);   
-        return view('AdminCategory',$data);
+        $data['AdminCategory'] = AdminCategory::orderBy('id', 'asc')->paginate(10);
+        return view('AdminCategory', $data);
+    }
+    public function create()
+    {
+        return view('AdminCategoryCreate');
     }
     public function add()
     {
@@ -19,24 +23,24 @@ class AdminCategoryController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'cat_name'=>'required',
+        ]);
         if (AdminCategory::find($request->id)) {
             session()->flash('warning', 'Already in system.');
             return redirect()->back();
+        } else {
+            $category = new AdminCategory();
+            $category->cat_name =$request->post('cat_name');
+            $category->save();
+            return redirect()->route('admin.category')->with('success', 'Category created successfully.');
         }
-        else
-        {
-        $category = new AdminCategory();
-        $category->cat_name =$request->post('cat_name');
-        $category->save();    
-        return redirect()->back();
-        }
-    
     }
-    
+
     public function edit($id)
     {
-        $category=AdminCategory::where('id',$id)->first();
-        return view('editAdmincategory',compact('category'));
+        $category=AdminCategory::where('id', $id)->first();
+        return view('editAdmincategory', compact('category'));
     }
     public function update(Request $request)
     {
@@ -47,7 +51,7 @@ class AdminCategoryController extends Controller
     }
     public function delete($id)
     {
-        $category = AdminCategory::where('id',$id)->delete();
+        $category = AdminCategory::where('id', $id)->delete();
         return redirect()->back();
     }
 }

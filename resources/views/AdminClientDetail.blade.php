@@ -4,46 +4,6 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
-{{--                 <div class="card">
-                    <div class="card-header row">
-                        <div class="col-md-6">
-                            <strong class="card-title col-lg-6">Clients Table</strong>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#AddClient">
-                                Add Product
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="card-body row">
-                        <table id="bootstrap-data-table-export" class=""
-                            id="CategoryTabel">
-
-                            <thead>
-                                <tr>
-                                    <th class="col-lg-2">Client Name :- </th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th class="col-lg-2">Client Email :- </th>
-                                    <td>{{$client->email}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-lg-2">Client Phone :- </th>
-                                    <td>{{$client->phone}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-lg-2">Client Address :- </th>
-                                    <td>{{$client->address}}</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> --}}
                 <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Client Details</h4>

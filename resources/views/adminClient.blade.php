@@ -5,9 +5,9 @@
       <div class="card-body">
         <h4 class="card-title">Clients table</h4>
         <p class="card-description">
-            <a href="{{ route('admin.new.client') }}">Add Client </a>
+            <a href="{{ route('admin.new.client') }}" class="btn btn-sm btn-info">Add Client </a>
         </p>
-        <div class="table-responsive pt-3">
+        <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
                 <tr>
@@ -19,19 +19,19 @@
                     <th>action</th>
                 </tr>
             </thead>
-            <tbody>
-                @forelse ($client as $client)
+            <tbody class="p-0 me-0 ms-0 mt-0">
+                @forelse ($client as $clients)
                     <tr>
-                        <td>{{$client->id}}</td>
-                        <td>{{$client->name}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->phone}}</td>
-                        <td>{{$client->address}}</td>
+                        <td>{{$clients->id}}</td>
+                        <td>{{$clients->name}}</td>
+                        <td>{{$clients->email}}</td>
+                        <td>{{$clients->phone}}</td>
+                        <td>{{$clients->address}}</td>
                         <td>
-                            <a href="{{route('detail.client',$client->id)}}">Details</a>
-                            <a href="{{route('edit.client',$client->id)}}">Edit</a>
-                            <a href="{{route('delete.client',$client->id)}}">Delete</a>
-                            <a href="{{route('download.pdf',$client->id)}}">PDF</a>
+                            <a href="{{route('detail.client',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-more"></i></a>
+                            <a href="{{route('edit.client',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-lead-pencil"></i></a>
+                            <a href="{{route('delete.client',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-delete"></i></a>
+                            <a href="{{route('download.pdf',$clients->id)}}" class="btn btn-sm p-0"><i class="mdi mdi-file-pdf"></i></a>
                         </td>
                     </tr>
                 @empty
@@ -39,6 +39,9 @@
                         <td colspan="6" class="bg-light text-danger">No records found.</td>
                     </tr>
                 @endforelse
+                <tr >
+                  <td colspan="6" >{!! $client->links() !!}</td>
+                </tr>
             </tbody>
           </table>
         </div>
@@ -46,40 +49,4 @@
     </div>
   </div>
 
-{{-- Edit Client Modal --}}
-<div class="modal fade" id="EditClientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Client</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form id="addCategory" name="addCategory" action="{{route('update.client')}}" method="POST">
-                @csrf
-                <input type="hidden" name="id" value="{{$client->id}}">
-                <div class="form-group">
-                    <label for="txtCatName">Client Name:</label>
-                    <input type="text" class="form-control" value="{{$client->name}}" placeholder="Enter Client Name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="txtCatName">Client Email:</label>
-                    <input type="email" class="form-control" value="{{$client->email}}" placeholder="Enter Client Email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="txtCatName">Client Phone:</label>
-                    <input type="number" class="form-control" value="{{$client->phone}}"  placeholder="Enter Client Phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="txtCatName">Client Address:</label><br>
-                    <textarea name="address" id="" cols="65" rows="5" placeholder="Enter Client Address">{{$client->address}}</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
-{{-- /Edit Client Modal --}}
 @endsection

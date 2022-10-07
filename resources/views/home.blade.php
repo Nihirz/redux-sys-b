@@ -11,7 +11,7 @@
                 <div class="row">
                   <div class="col-sm-4">
                     {{-- <p class="status-summary-ight-white mb-1"></p> --}}
-                    <h2 class="text-info">357</h2>
+                    <h2 class="text-info">{{ $category }}</h2>
                   </div>
                 </div>
               </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                   <div class="col-sm-4">
                     {{-- <p class="status-summary-ight-white mb-1"></p> --}}
-                    <h2 class="text-info">357</h2>
+                    <h2 class="text-info">{{ $client }}</h2>
                   </div>
                 </div>
               </div>
